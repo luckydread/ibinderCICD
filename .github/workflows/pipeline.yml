@@ -14,7 +14,7 @@ jobs:
     env:
       AZURE_FUNCTIONAPP_NAME: ibindercicd-test
       AZURE_FUNCTIONAPP_PACKAGE_PATH: '.'
-      DOTNET_VERSION: '3.0.13'
+      DOTNET_VERSION: '6.0.x' 
 
     steps:
 
@@ -22,12 +22,12 @@ jobs:
         uses: actions/checkout@main
 
       - name: Setup DotNet 3.1.x Environment
-        uses: actions/setup-dotnet@v1
+        uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: 3.1.x
+          dotnet-version: ${{ env.DOTNET_VERSION }}
 
       - name: Resolve Project Dependencies Using Dotnet
-        shell: bash
+        shell: pwsh
         run: |
           pushd './${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}'
           dotnet build --configuration Release --output ./output
