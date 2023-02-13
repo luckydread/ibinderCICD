@@ -2,16 +2,14 @@ name: Function App Deployment
 on:
   push:
     branches: 
-      - test
+      - develop
     
   pull_request:
     branches:
       - main
-      - develop
-  workflow_dispatch:
+      - test
 
 jobs:
-
   cd-build-deploy-development:
     name: Continuous Deployment - Development
     runs-on: ubuntu-latest
