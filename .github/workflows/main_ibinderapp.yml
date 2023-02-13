@@ -39,4 +39,4 @@ jobs:
           app-name: 'ibinderApp'
           slot-name: 'Production'
           package: '${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}/output'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_78C75BF86E46406291A86B77CB88E49B }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_B90769FD9CF7442889DBC157259A0A1C }}
