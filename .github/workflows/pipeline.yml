@@ -3,9 +3,11 @@ on:
   push:
     branches: 
       - develop
+    
+  pull_request:
+    branches:
       - test
-      - main
-
+###
 jobs:
   cd-build-deploy-development:
     name: Continuous Deployment - Development
