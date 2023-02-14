@@ -1,19 +1,20 @@
-name: Function App Deployment
+
+name: CI-CD Pipline
 on:
   push:
-    branches: 
-      - develop
-      - test
-      - main
-    
+    branches:
+          - develop
+          - test
+          - main 
+
 jobs:
   cd-build-deploy-development:
-    name: Continuous Deployment - Development
+    name: Build and Deploy - Development
     runs-on: ubuntu-latest
     environment: Development
     if: github.ref == 'refs/heads/develop'
     env:
-      AZURE_FUNCTIONAPP_NAME: ibinder-Development
+      AZURE_FUNCTIONAPP_NAME: development
       AZURE_FUNCTIONAPP_PACKAGE_PATH: '.'
       DOTNET_VERSION: '6.0.x' 
 
@@ -41,14 +42,13 @@ jobs:
           package: '${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}/output'
           publish-profile: ${{ secrets.AZURE_FUNCTIONAPP_PUBLISH_PROFILE }}
 
-
   cd-build-deploy-test:
-    name: Continuous Deployment - Test
+    name: Build and Deploy - Test
     runs-on: ubuntu-latest
     environment: Test
     if: github.ref == 'refs/heads/test'
     env:
-      AZURE_FUNCTIONAPP_NAME: ibinder-Test
+      AZURE_FUNCTIONAPP_NAME: test
       AZURE_FUNCTIONAPP_PACKAGE_PATH: '.'
       DOTNET_VERSION: '6.0.x' 
 
@@ -77,12 +77,12 @@ jobs:
           publish-profile: ${{ secrets.AZURE_FUNCTIONAPP_PUBLISH_PROFILE }}
 
   cd-build-deploy-production:
-    name: Continuous Deployment - Production
+    name: Build and Deploy - Production
     runs-on: ubuntu-latest
     environment: Production
     if: github.ref == 'refs/heads/main'
     env:
-      AZURE_FUNCTIONAPP_NAME: ibinder-Staging
+      AZURE_FUNCTIONAPP_NAME: staging
       AZURE_FUNCTIONAPP_PACKAGE_PATH: '.'
       DOTNET_VERSION: '6.0.x' 
 
@@ -110,8 +110,13 @@ jobs:
           package: '${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}/output'
           publish-profile: ${{ secrets.AZURE_FUNCTIONAPP_PUBLISH_PROFILE }}
 
-  cd-swap-staging-production:
-    runs-on: ubuntu-latest
-    steps:
+      - name: Swap staging with product environment 
+        uses: azure/login@v1
+        with:
+          creds: '${{ secrets.AZURE_CREDENTIALS }}' 
       - run: | 
-              az functionapp deployment swap -g ibinder -n ibinderApp --slot ibinder-Staging \ --target-slot ibinderapp
+               az functionapp deployment slot swap -g ibinder -n ibinder --slot staging 
+
+
+
+        
