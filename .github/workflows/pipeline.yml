@@ -113,5 +113,9 @@ jobs:
   cd-swap-staging-production:
     runs-on: ubuntu-latest
     steps:
-      - run: | 
-              az functionapp deployment swap -g ibinder -n ibinderApp --slot ibinder-Staging \ --target-slot ibinderapp
+      - name: Swap script
+        uses: azure/CLI@v3
+        with:
+          azcliversion: 2.3.0
+          inlineScript: | 
+              az functionapp deployment slot swap -g ibinder -n ibinderApp --slot ibinder-Staging \ --target-slot ibinderapp
