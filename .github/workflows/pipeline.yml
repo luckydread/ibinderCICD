@@ -13,4 +13,8 @@ jobs:
       - uses: azure/login@v1
         with:
           creds: '${{ secrets.AZURE_CREDENTIALS }}'
+          run: | 
+              az login
+              az functionapp deployment slot swap -g ibinder -n ibinderApp --slot Staging 
+
         
