@@ -14,7 +14,7 @@ jobs:
 
 
        - run: | 
-              az functionapp deployment slot swap -g ibinder -n ibinderApp --slot Staging 
+              az functionapp deployment slot swap -g ibinder -n ibinder --slot staging 
 
 
 
