@@ -7,16 +7,11 @@ jobs:
   login:
     runs-on: ubuntu-latest
     steps:
-      - name: Log in with Azure
+      - name: login
         uses: azure/login@v1
         with:
           creds: '${{ secrets.AZURE_CREDENTIALS }}'
-
-  swap-staging-production:
-    name: Final_job
-    needs: login
-    runs-on: ubuntu-latest
-    steps:
-      - run: | 
+          run: | 
               az functionapp deployment slot swap -g ibinder -n ibinderApp --slot Staging 
 
+        
