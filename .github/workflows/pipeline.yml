@@ -85,7 +85,6 @@ jobs:
       AZURE_FUNCTIONAPP_NAME: staging
       AZURE_FUNCTIONAPP_PACKAGE_PATH: '.'
       DOTNET_VERSION: '6.0.x' 
-
     steps:
 
       - name: Checkout
