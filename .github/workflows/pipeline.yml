@@ -111,3 +111,8 @@ jobs:
                az functionapp deployment slot swap -g ibinder -n ibinder --slot staging 
 
         
+#####
+#####
+#####
+#####
+#####
