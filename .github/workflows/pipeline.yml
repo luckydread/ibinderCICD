@@ -10,3 +10,10 @@ jobs:
         uses: azure/login@v1
         with:
           creds: '${{ secrets.AZURE_CREDENTIALS }}'
+
+  cd-swap-staging-production:
+    runs-on: ubuntu-latest
+    steps:
+      - run: | 
+              az functionapp deployment slot swap -g ibinder -n ibinderApp --slot Staging 
+
