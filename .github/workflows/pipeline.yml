@@ -12,6 +12,7 @@ jobs:
           creds: '${{ secrets.AZURE_CREDENTIALS }}'
 
   cd-swap-staging-production:
+    name: Final_job
     runs-on: ubuntu-latest
     steps:
       - run: | 
