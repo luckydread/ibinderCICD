@@ -1,9 +1,10 @@
-on: [push]
-
-name: AzureLoginSample
+on:
+  push:
+    branches:
+          - test 
 
 jobs:
-  build-and-deploy:
+  login:
     runs-on: ubuntu-latest
     steps:
       - name: Log in with Azure
@@ -11,9 +12,9 @@ jobs:
         with:
           creds: '${{ secrets.AZURE_CREDENTIALS }}'
 
-  cd-swap-staging-production:
+  swap-staging-production:
     name: Final_job
-    needs: build-and-deploy
+    needs: login
     runs-on: ubuntu-latest
     steps:
       - run: | 
