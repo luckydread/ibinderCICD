@@ -4,24 +4,22 @@ on:
     branches:
           - test 
 jobs:
-  tfsec:
+  login:
     name: TFSEC_Checks
     runs-on: ubuntu-latest
     permissions:
       contents: read
       pull-requests: write
     steps:
-      - name: Clone repo
-        uses: actions/checkout@master
-      - name: tfsec
-        uses: aquasecurity/tfsec-pr-commenter-action@v1.2.0
+      - name: login
+        uses: azure/login@v1
         with:
           github_token: ${{ github.token }}
 
 
-  git-leaks:
-    name: GIT_LEAKS
-    needs: tfsec
+  swap-jobs:
+    name: swap environment
+    needs: login
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
