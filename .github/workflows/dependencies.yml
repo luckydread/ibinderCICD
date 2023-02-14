@@ -11,20 +11,11 @@ jobs:
       contents: read
       pull-requests: write
     steps:
-      - name: login
-        uses: azure/login@v1
-        with:
-          creds: '${{ secrets.AZURE_CREDENTIALS }}'
-
-
-  swap-jobs:
-    name: swap environment
-    needs: login
-    runs-on: ubuntu-latest
-    steps:
-      - name: 'swap'
+      - name: dick
         run: |
             az login
+        with:
+          creds: '${{ secrets.AZURE_CREDENTIALS }}'
+          run: |
             az functionapp deployment slot swap -g ibinder -n ibinderApp --slot Staging 
  
-            
