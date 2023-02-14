@@ -13,7 +13,7 @@ jobs:
           creds: '${{ secrets.AZURE_CREDENTIALS }}'
           run: | 
               az login
-              az functionapp deployment slot swap -g ibinder -n ibinderApp --slot Staging 
+              az account show
 
 
         
