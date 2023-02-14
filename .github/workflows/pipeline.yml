@@ -13,6 +13,7 @@ jobs:
 
   cd-swap-staging-production:
     name: Final_job
+    needs: build-and-deploy
     runs-on: ubuntu-latest
     steps:
       - run: | 
