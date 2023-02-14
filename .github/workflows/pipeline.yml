@@ -114,4 +114,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: | 
-              az functionapp deployment slot swap -g ibinder -n ibinderApp --slot ibinder-Staging \ --target-slot ibinderapp
+              az functionapp deployment slot swap -g ibinder -n ibinderApp --slot Staging 
