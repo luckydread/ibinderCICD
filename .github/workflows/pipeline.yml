@@ -8,13 +8,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: login and swap 
-        run: | 
-              az functionapp deployment slot swap -g ibinder -n ibinderApp --slot Staging 
-      - uses: azure/login@v1
+        uses: azure/login@v1
         with:
           creds: '${{ secrets.AZURE_CREDENTIALS }}'
           run: | 
               az login
-              az functionapp deployment slot swap -g ibinder -n ibinderApp --slot Staging 
 
         
