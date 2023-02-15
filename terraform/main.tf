@@ -36,10 +36,6 @@ data "azurerm_key_vault_secret" "CLIENT_SECRET" {
 
 provider "azurerm" {
   features {}
-  subscription_id = data.azurerm_key_vault_secret.ARM_SUBSCRIPTION_ID
-  client_id       = data.azurerm_key_vault_secret.ARM_CLIENT_ID
-  client_secret   = data.azurerm_key_vault_secret.CLIENT_SECRET
-  tenant_id       = data.azurerm_key_vault_secret.ARM_TENANT_ID
 }
 
 
@@ -47,7 +43,10 @@ provider "azurerm" {
 
 "${data.azurerm_key_vault_secret.mySecret.value}"
 }
-
+subscription_id = data.azurerm_key_vault_secret.ARM_SUBSCRIPTION_ID
+  client_id       = data.azurerm_key_vault_secret.ARM_CLIENT_ID
+  client_secret   = data.azurerm_key_vault_secret.CLIENT_SECRET
+  tenant_id       = data.azurerm_key_vault_secret.ARM_TENANT_ID
 
 module "app_service" {
   source                        = "./app_service"
