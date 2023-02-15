@@ -19,6 +19,7 @@ jobs:
       ARM_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
       ARM_SUBSCRIPTION_ID: ${{ secrets.MVP_SUBSCRIPTION }}
       ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+      Terraform_Path: './terraform'
       
     steps:
       - name: Log in with Azure
@@ -26,7 +27,13 @@ jobs:
         with:
           creds: '${{ secrets.AZURE_CREDENTIALS }}'
       - name: Checkout
-        uses: actions/checkout@main
+        uses: actions/checkout@v3
+
+      - name: 'Terraform init2'
+        id: init
+        run: |
+           cd ${{ env.Terraform_Path}}
+           terraform init
 
       - name: 'Terraform Format'
         uses: hashicorp/terraform-github-actions@master
