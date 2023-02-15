@@ -19,7 +19,6 @@ jobs:
       ARM_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
       ARM_SUBSCRIPTION_ID: ${{ secrets.MVP_SUBSCRIPTION }}
       ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
-      Terraform_Path: './terraform'
       
     steps:
       - name: Log in with Azure
@@ -29,11 +28,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: 'Terraform init2'
-        id: init
-        run: |
-           cd ${{ env.Terraform_Path}}
-           terraform init
+      - name: 'Terraform Init'
+        uses: hashicorp/terraform-github-actions@master
+        with:
+          tf_actions_version: 0.14.8
+          tf_actions_subcommand: 'init'
+          tf_actions_working_dir: "./terraform"
+
 
       - name: 'Terraform Format'
         uses: hashicorp/terraform-github-actions@master
@@ -42,13 +43,6 @@ jobs:
           tf_actions_subcommand: 'fmt'
           tf_actions_working_dir: "./terraform"
  
-      - name: 'Terraform Init'
-        uses: hashicorp/terraform-github-actions@master
-        with:
-          tf_actions_version: 0.14.8
-          tf_actions_subcommand: 'init'
-          tf_actions_working_dir: "./terraform"
-
       - name: 'Terraform Validate'
         uses: hashicorp/terraform-github-actions@master
         with:
