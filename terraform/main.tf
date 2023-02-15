@@ -36,3 +36,11 @@ module "app_service" {
   azurerm_service_plan_os_type  = var.azurerm_service_plan_os_type
   azurerm_service_plan_sku_name = var.azurerm_service_plan_sku_name
 }*/
+
+
+module "key_vault" {
+  source                  = "./key_vault"
+  resource_group_location = var.resource_group_location
+  resource_group_name     = var.resource_group_name
+  azurerm_key_vault_name  = var.azurerm_key_vault_name
+}
