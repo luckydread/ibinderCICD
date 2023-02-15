@@ -15,6 +15,11 @@ jobs:
       AZURE_FUNCTIONAPP_NAME: development
       AZURE_FUNCTIONAPP_PACKAGE_PATH: '.'
       DOTNET_VERSION: '6.0.x' 
+      ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+      ARM_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
+      ARM_SUBSCRIPTION_ID: ${{ secrets.MVP_SUBSCRIPTION }}
+      ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+      
     steps:
       - name: Log in with Azure
         uses: azure/login@v1
