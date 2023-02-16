@@ -33,3 +33,24 @@ variable "azurerm_key_vault_name" {
   type        = string
   default     = "ibindervault"
 }
+
+
+variable "azurerm_service_plan_name" {
+  description = "The app service plan name."
+  type        = string
+  default     = "ibinderappservice"
+
+}
+
+variable "azurerm_service_plan_os_type" {
+  description = "The app service plan OS type"
+  type        = string
+  default     = "Windows"
+
+}
+
+variable "azurerm_service_plan_sku_name" {
+  description = "The app service plan sku name"
+  type        = string
+  default     = "P1v2"
+}
