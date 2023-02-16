@@ -50,3 +50,10 @@ variable "azurerm_application_insights_name" {
   default     = "issuereporting-application-insights"
 
 }
+
+variable "azurerm_storage_account_name" {
+  description = "The storage account name."
+  type        = string
+  default     = "customeruserstorage"
+}
+
