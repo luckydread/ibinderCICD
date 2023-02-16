@@ -13,7 +13,7 @@ variable "resource_group_location" {
 variable "azurerm_key_vault_name" {
   description = "The keyvault name."
   type        = string
-  default     = "ibindervault"
+  default     = "myvault"
 }
 
 
