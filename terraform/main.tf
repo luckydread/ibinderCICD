@@ -10,6 +10,7 @@ terraform {
     storage_account_name = "customeruserstorage"
     container_name       = "state"
     key                  = "terraform.tfstate"
+    depends_on           = [module.key_vault]
   }
 }
 
