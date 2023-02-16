@@ -28,7 +28,7 @@ resource "azurerm_key_vault" "issuereporting" {
   network_acls {
     # The Default Action to use when no rules match from ip_rules / 
     # virtual_network_subnet_ids. Possible values are Allow and Deny
-    default_action = "Allow"
+    default_action = "Deny"
 
     # Allows all azure services to access your keyvault. Can be set to 'None'
     bypass = "AzureServices"
