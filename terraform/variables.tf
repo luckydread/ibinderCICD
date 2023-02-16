@@ -36,3 +36,17 @@ variable "azurerm_service_plan_sku_name" {
   type        = string
   default     = "P1v2"
 }
+
+
+variable "azurerm_application_insights_type" {
+  description = "The application insights type."
+  type        = string
+  default     = "web"
+}
+
+variable "azurerm_application_insights_name" {
+  description = "The application insights name."
+  type        = string
+  default     = "issuereporting-application-insights"
+
+}
