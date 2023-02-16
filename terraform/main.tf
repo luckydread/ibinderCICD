@@ -46,7 +46,7 @@ module "application_insights" {
 module "storage_account" {
   source                       = "./storage_Account"
   resource_group_name          = var.resource_group_name
-  resource_group_location   = var.resource_group_location
+  resource_group_location      = var.resource_group_location
   azurerm_storage_account_name = var.azurerm_storage_account_name
 
 }
