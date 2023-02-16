@@ -13,7 +13,3 @@ output "connection_string" {
   value       = azurerm_application_insights.issuereporting.connection_string
 }
 
-output "id" {
-  description = "Object ID of the App Insights instance."
-  value       = azurerm_application_insights.issuereporting.id
-}
