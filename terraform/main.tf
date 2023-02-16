@@ -27,7 +27,7 @@ module "key_vault" {
 }
 
 module "app_service_plan" {
-  source = "./app_service"
+  source                        = "./app_service"
   resource_group_location       = var.resource_group_location
   resource_group_name           = var.resource_group_name
   azurerm_service_plan_name     = var.azurerm_service_plan_name
