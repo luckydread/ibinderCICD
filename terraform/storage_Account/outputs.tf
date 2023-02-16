@@ -1,5 +1,4 @@
 output "connection_string" {
   description = "Storage account coonection string"
-  value       = azurerm_application_insights.issuereporting.instrumentation_key
+  value       = azurerm_storage_account.issuereporting.primary_connection_string
 }
-
