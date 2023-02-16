@@ -2,13 +2,14 @@
 data "azurerm_client_config" "current" {}
 
 resource "azurerm_key_vault" "issuereporting" {
-  name                = var.azurerm_key_vault_name
-  location            = var.resource_group_location
-  resource_group_name = var.resource_group_name
+  name                        = var.azurerm_key_vault_name
+  location                    = var.resource_group_location
+  resource_group_name         = var.resource_group_name
   enabled_for_disk_encryption = true
-  tenant_id = data.azurerm_client_config.current.tenant_id
+  soft_delete_retention_days  = 90
+  tenant_id                   = data.azurerm_client_config.current.tenant_id
   purge_protection_enabled    = true
-  sku_name = "standard"
+  sku_name                    = "standard"
   access_policy {
     tenant_id = data.azurerm_client_config.current.tenant_id
     object_id = data.azurerm_client_config.current.object_id
@@ -26,10 +27,10 @@ resource "azurerm_key_vault" "issuereporting" {
     default_action = "Deny"
 
     # Allows all azure services to access your keyvault. Can be set to 'None'
-    bypass         = "AzureServices"
+    bypass = "AzureServices"
 
     # The list of allowed ip addresses.
-    ip_rules       = ["1.1.1.1","2.2.2.2"]
+    ip_rules = ["1.1.1.1", "2.2.2.2"]
 
   }
 }
