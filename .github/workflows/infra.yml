@@ -4,6 +4,20 @@ on:
     branches:
           - infra
 jobs:
+  tfsec:
+    name: Check Terraform Configuration
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+    steps:
+      - name: Clone repo
+        uses: actions/checkout@master
+      - name: tfsec
+        uses: aquasecurity/tfsec-pr-commenter-action@v1.2.0
+        with:
+          github_token: ${{ github.token }}
+  
   provision-infra:
     name: Provision infrastructure
     runs-on: ubuntu-latest
