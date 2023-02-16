@@ -14,9 +14,9 @@ resource "azurerm_key_vault" "issuereporting" {
     tenant_id = data.azurerm_client_config.current.tenant_id
     object_id = data.azurerm_client_config.current.object_id
 
-    key_permissions = [ 
-      "Get", "List", "Set" 
-      ]
+    key_permissions = [
+      "Get", "List", "Set"
+    ]
 
     secret_permissions = [
       "Get", "List", "Set"
