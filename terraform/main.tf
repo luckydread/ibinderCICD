@@ -44,8 +44,9 @@ module "application_insights" {
 }
 
 module "storage_account" {
-  source              = "./storage_Account"
-  name                = var.azurerm_storage_account_name
-  resource_group_name = var.resource_group_name
-  location            = var.resource_group_location
+  source                       = "./storage_Account"
+  resource_group_name          = var.resource_group_name
+  resresource_group_location   = var.resource_group_location
+  azurerm_storage_account_name = var.azurerm_storage_account_name
+
 }
