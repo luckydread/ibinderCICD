@@ -31,5 +31,5 @@ variable "azurerm_service_plan_sku_name" {
 variable "azurerm_key_vault_name" {
   description = "The keyvault name."
   type        = string
-  default     = "customervaultlocker"
+  default     = "ibindervault"
 }
