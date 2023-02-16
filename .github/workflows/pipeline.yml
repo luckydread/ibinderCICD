@@ -63,6 +63,7 @@ jobs:
           tf_actions_version: 0.14.8
           tf_actions_subcommand: 'apply'
           tf_actions_working_dir: "./terraform"
+          
       - name: Setup DotNet ${{ env.DOTNET_VERSION }} Environment
         uses: actions/setup-dotnet@v3
         with:
