@@ -43,6 +43,9 @@ module "application_insights" {
   azurerm_application_insights_name = var.azurerm_application_insights_name
 }
 
+
+
+
 module "storage_account" {
   source                       = "./storage_Account"
   resource_group_name          = var.resource_group_name
